@@ -5,22 +5,19 @@ date: "8 Sep 2014"
 output: html_document
 ---
 
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
-summary(cars)
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-The purpose of this project is to demonstrate your ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. You will be graded by your peers on a series of yes/no questions related to the project. You will be required to submit: 1) a tidy data set as described below, 2) a link to a Github repository with your script for performing the analysis, and 3) a code book that describes the variables, the data, and any transformations or work that you performed to clean up the data called CodeBook.md. You should also include a README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected.  
+- The feature names are read from features.txt
+- The activity labels are read from activity_labels.txt, 
+  each row has an activity number and an activity label
+- The subject, activity and testdata from the test dataset are combined to one dataframe
+  with cbind, and the columns are named with the raw feature names.
+- Same procedure for the train dataset.
+- Now the test and train dataframes are combined to one dataframe and stored in 'res', 
+  each row in 'res' has a subject nr an acivity nr and 561 feature observations.
+- The columns with feature names containing any of the words "Mean, mean, Std, std" are 
+  extracted and the result is stored in 'res2' toghether with subject and activity nr,
+  so each row in 'res2' contains a subject nr an acivity nr and 86 feature observations.
+- The activity numbers in 'res2' are substituted by the descriptive activity labels.
+- All the featurenames in 'res2' are cleaned up, i.e., all lowercase, no dots or parenthesis.
+- 'res2' is now grouped by subject and then activity, and the mean is calculated for each feature
+  in each group. The result is stored in 'tidymean'.
 
