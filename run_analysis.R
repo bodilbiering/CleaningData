@@ -47,7 +47,3 @@ names(res2) <- gsub("[.]|[(]|[)]", "", convertednames) %>%
 #5: Group by subject, group by activity, take mean for each var in these groups
 tidymean <- group_by(res2, subject, activity) %>%
             summarise_each(funs(mean))
-
-#todo: 
-#codebook
-#take the swirl again to see if improvements can be made
