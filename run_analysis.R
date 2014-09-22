@@ -39,7 +39,7 @@ res <- rbind(testres, trainres)
 meanStdNames <- grep("Mean|mean|Std|std", names(res))
 res2 <- res[,c(1,2,meanStdNames)]
 #3. Uses descriptive activity names to name the activities in the data set
-activities <- sapply(res2$activity, function(x) activityLabels[x,"label"])
+res2$activity <- sapply(res2$activity, function(x) activityLabels[x,"label"])
 #4 clean up labels, i.e., lowercase, no dots or parenthesis.
 names(res2) <- gsub("[.]|[(]|[)]", "", names(res2)) %>% 
                tolower
